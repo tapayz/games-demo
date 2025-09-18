@@ -1,33 +1,21 @@
 {
   "compilerOptions": {
-    "useDefineForClassFields": true,
-    "jsxFactory": "h",
-    "jsxFragmentFactory": "Fragment",
-    "sourceMap": true,
     "target": "ESNext",
-    "jsx": "preserve",
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ],
-    "baseUrl": ".",
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
+    "jsx": "preserve",
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
+    "baseUrl": ".",
     "paths": {
-      "@": [
-        "src"
-      ],
-      "@/*": [
-        "src/*"
-      ]
+      "@": ["src"],
+      "@/*": ["src/*"]
     },
     "resolveJsonModule": true,
     "types": [
       "vite/client",
       "vite-plugin-vue-layouts/client",
-      "unplugin-vue-router/client"
+      "unplugin-vue-router/client",
+      "node"                      // ← 추가(선택적이지만 권장)
     ],
     "strict": true,
     "strictNullChecks": true,
@@ -35,7 +23,10 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "useDefineForClassFields": true,
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment"
   },
   "include": [
     "./typed-router.d.ts",
@@ -47,9 +38,6 @@
     "./auto-imports.d.ts",
     "./components.d.ts"
   ],
-  "exclude": [
-    "./dist",
-    "./node_modules"
-  ],
-  "references": [{ "path": "./tsconfig.node.json" }],
+  "exclude": ["./dist", "./node_modules"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
