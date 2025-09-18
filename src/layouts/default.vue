@@ -4,9 +4,9 @@
       <template v-if="route.name === '/'">
         <TopBlob />
 
-        <LeftBlob />
+        <!-- <LeftBlob /> -->
 
-        <RightBlob />
+        <!-- <RightBlob /> -->
       </template>
 
       <Toolbar />
@@ -19,5 +19,5 @@
 </template>
 
 <script setup lang="ts">
-  const route = useRoute()
+const route = useRoute();
 </script>

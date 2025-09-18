@@ -2,28 +2,28 @@
   <section id="home">
     <Hero />
 
-    <VVideo />
+    <!-- <VVideo /> -->
 
-    <Features />
+    <!-- <Features /> -->
 
-    <Stack v-if="smAndUp" />
+    <!-- <Stack v-if="smAndUp" /> -->
 
     <Guarantees />
 
-    <Market />
+    <!-- <Market /> -->
 
-    <StayInformed />
+    <!-- <StayInformed /> -->
   </section>
 </template>
 
 <script setup lang="ts">
-  const { smAndUp } = useDisplay()
+const { smAndUp } = useDisplay();
 </script>
 
-  <style lang="sass">
-    #home section
-      padding: 32px 16px 96px
+<style lang="sass">
+#home section
+  padding: 32px 16px 96px
 
-      @media screen and (max-width: 360px)
-        padding: 32px 16px
-  </style>
+  @media screen and (max-width: 360px)
+    padding: 32px 16px
+</style>

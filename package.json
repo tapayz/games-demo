@@ -1,16 +1,23 @@
 {
-  "name": "vuetify-crypto-theme",
+  "name": "tapayz-games-demo",
   "version": "1.0.2",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
+    "build:prod": "vue-tsc --noEmit && vite build --mode production",
     "preview": "vite preview",
     "lint": "eslint . --fix --ignore-path .gitignore",
     "postversion": "node scripts/postversion.cjs",
-    "pm2": "yarn build && pm2 serve dist 4000 --spa --name vite-app"
+    "pm2": "yarn build:prod && pm2 serve dist 4000 --spa --name vite-app",
+    "deploy": "yarn build:prod && pm2 start ecosystem.config.js",
+    "deploy:stop": "pm2 stop tapayz-games-demo",
+    "deploy:restart": "pm2 restart tapayz-games-demo",
+    "deploy:reload": "pm2 reload tapayz-games-demo",
+    "deploy:delete": "pm2 delete tapayz-games-demo"
   },
   "dependencies": {
     "@mdi/font": "6.2.95",
+    "axios": "^1.12.2",
     "core-js": "^3.34.0",
     "roboto-fontface": "*",
     "vue": "^3.4.21",

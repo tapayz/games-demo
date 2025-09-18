@@ -5,24 +5,15 @@
     class="px-0"
     tag="section"
   >
-    <v-responsive
-      class="overflow-visible"
-      min-height="50vh"
-    >
+    <v-responsive class="overflow-visible" min-height="50vh">
       <v-row
         align="center"
         align-content="center"
         class="fill-height mx-0"
         justify="space-around"
       >
-        <v-slide-x-transition
-          v-if="mdAndUp"
-          appear
-        >
-          <v-col
-            cols="12"
-            md="6"
-          >
+        <v-slide-x-transition v-if="mdAndUp" appear>
+          <v-col cols="12" md="6">
             <ImgCard src="/assets/features/1.jpg" />
           </v-col>
         </v-slide-x-transition>
@@ -33,7 +24,7 @@
               :class="[smAndDown ? 'display-2 text-white' : 'text-h1']"
               class="font-weight-bold"
             >
-              CRYPTO <span class="font-weight-light">Coin</span>
+              Tapayz
             </h1>
 
             <div
@@ -43,17 +34,16 @@
               Secure wallet transfers, <em>today</em>
             </div>
 
-            <Btn
-              class="title"
-              height="64"
-              block
-            >
-              <span class="text-h6">Sign Up Now</span>
+            <Btn class="title" height="78" block color="#5278ff">
+              <span class="text-h6">Deposit</span>
+            </Btn>
+            <Btn class="title mt-4" height="78" block color="#e95252">
+              <span class="text-h6">Withdrawal</span>
             </Btn>
           </v-col>
         </v-slide-x-reverse-transition>
 
-        <v-slide-y-reverse-transition appear>
+        <!-- <v-slide-y-reverse-transition appear>
           <v-col
             class="mt-12"
             cols="12"
@@ -89,30 +79,30 @@
               </v-row>
             </Card>
           </v-col>
-        </v-slide-y-reverse-transition>
+        </v-slide-y-reverse-transition> -->
       </v-row>
     </v-responsive>
   </v-container>
 </template>
 
 <script setup lang="ts">
-  const { mdAndUp, smAndDown } = useDisplay()
+const { mdAndUp, smAndDown } = useDisplay();
 
-  const highlights = ref([
-    {
-      src: '1.png',
-      title: 'Smooth Sailing',
-      text: 'A wallet crafted to reduce the steep learning curve of the blockchain.',
-    },
-    {
-      src: '2.png',
-      title: 'Decentralized',
-      text: 'We believe in the importance of a decentralized future, that’s why we want to bring the blockchain to the 99%.',
-    },
-    {
-      src: '3.png',
-      title: 'Web3 Injection',
-      text: 'Cutting edge tech, that makes interacting with the Ethereum blockchain seamless.',
-    },
-  ])
+const highlights = ref([
+  {
+    src: "1.png",
+    title: "Smooth Sailing",
+    text: "A wallet crafted to reduce the steep learning curve of the blockchain.",
+  },
+  {
+    src: "2.png",
+    title: "Decentralized",
+    text: "We believe in the importance of a decentralized future, that’s why we want to bring the blockchain to the 99%.",
+  },
+  {
+    src: "3.png",
+    title: "Web3 Injection",
+    text: "Cutting edge tech, that makes interacting with the Ethereum blockchain seamless.",
+  },
+]);
 </script>

@@ -24,6 +24,7 @@ export default defineConfig({
         {
           vuetify: ['useTheme', 'useDisplay'],
           'vue-router/auto': ['useRoute', 'useRouter'],
+          '@/plugins/axios': ['axios'],
         },
       ],
       dts: 'src/auto-imports.d.ts',
