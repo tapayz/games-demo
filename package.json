@@ -6,7 +6,8 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix --ignore-path .gitignore",
-    "postversion": "node scripts/postversion.cjs"
+    "postversion": "node scripts/postversion.cjs",
+    "pm2": "yarn build && pm2 serve dist 4000 --spa --name vite-app"
   },
   "dependencies": {
     "@mdi/font": "6.2.95",
