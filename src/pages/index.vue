@@ -16,9 +16,7 @@
   </section>
 </template>
 
-<script setup lang="ts">
-const { smAndUp } = useDisplay();
-</script>
+<script setup lang="ts"></script>
 
 <style lang="sass">
 #home section
