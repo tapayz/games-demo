@@ -8,7 +8,7 @@
     "preview": "vite preview",
     "lint": "eslint . --fix --ignore-path .gitignore",
     "postversion": "node scripts/postversion.cjs",
-    "pm2": "yarn build:prod && pm2 serve dist 4000 --spa --name vite-app",
+    "pm2": "yarn build:prod && pm2 serve dist 4000 --spa --name tapayz-games-demo",
     "deploy": "yarn build:prod && pm2 start ecosystem.config.js",
     "deploy:stop": "pm2 stop tapayz-games-demo",
     "deploy:restart": "pm2 restart tapayz-games-demo",

@@ -1,9 +1,5 @@
 <template>
-  <v-container
-    id="deposit"
-    class="px-0"
-    tag="section"
-  >
+  <v-container id="deposit" class="px-0" tag="section">
     <!-- Hero Section with Crypto Background -->
     <div class="crypto-hero-section">
       <v-container class="py-16">
@@ -11,12 +7,7 @@
           <v-col cols="12" md="8">
             <v-fade-transition appear>
               <div>
-                <v-icon
-                  icon="mdi-bitcoin"
-                  size="80"
-                  class="crypto-hero-icon mb-4"
-                  color="accent"
-                />
+                <v-icon icon="mdi-bitcoin" size="80" class="crypto-hero-icon mb-4" color="accent" />
                 <h1 class="text-h2 font-weight-bold text-white mb-4 crypto-title">
                   Crypto Deposit
                 </h1>
@@ -61,11 +52,7 @@
 
     <!-- Main Form Section -->
     <v-responsive class="overflow-visible" min-height="70vh">
-      <v-row
-        align="center"
-        justify="center"
-        class="fill-height mx-0 mt-n16"
-      >
+      <v-row align="center" justify="center" class="fill-height mx-0 mt-n16">
         <v-col cols="12" md="10" lg="8">
           <v-slide-y-transition appear>
             <Card class="deposit-form-card pa-8" elevation="32">
@@ -75,9 +62,7 @@
                   <v-avatar size="48" color="primary" class="mr-3">
                     <v-icon icon="mdi-wallet" size="28" color="white" />
                   </v-avatar>
-                  <h2 class="text-h4 font-weight-bold luxury-title">
-                    Digital Asset Deposit
-                  </h2>
+                  <h2 class="text-h4 font-weight-bold luxury-title">Digital Asset Deposit</h2>
                 </div>
                 <p class="text-body-1 text-grey-darken-1 luxury-subtitle">
                   Enter the information below to issue an invoice
@@ -238,22 +223,12 @@
               <!-- Response Display -->
               <v-expand-transition>
                 <div v-if="response" class="mt-12">
-                  <v-card
-                    color="success"
-                    variant="tonal"
-                    class="pa-6"
-                    rounded="lg"
-                  >
+                  <v-card color="success" variant="tonal" class="pa-6" rounded="lg">
                     <div class="d-flex align-center mb-4">
                       <v-icon icon="mdi-check-circle" size="32" color="success" class="mr-3" />
                       <h3 class="text-h5 font-weight-bold">Response Result</h3>
                     </div>
-                    <v-card
-                      color="surface"
-                      variant="outlined"
-                      class="pa-4"
-                      rounded="lg"
-                    >
+                    <v-card color="surface" variant="outlined" class="pa-4" rounded="lg">
                       <v-code tag="pre" class="response-code">{{ formattedResponse }}</v-code>
                     </v-card>
                   </v-card>
@@ -287,55 +262,55 @@
 </template>
 
 <script setup lang="ts">
-import { axios } from '@/plugins/axios'
+import { axios } from "@/plugins/axios";
 
 // Form data interface
 interface InvoiceForm {
-  customerId: number | null
-  customerName: string
-  title: string
-  priceAtRequest: number | null
-  fiatAssetId: number | null
-  cryptoAssetId: number | null
-  cashAmount: number | null
-  expiredSecond: number | null
+  customerId: number | null;
+  customerName: string;
+  title: string;
+  priceAtRequest: number | null;
+  fiatAssetId: number | null;
+  cryptoAssetId: number | null;
+  cashAmount: number | null;
+  expiredSecond: number | null;
 }
 
 // Form validation rules
 const rules = {
-  required: (value: any) => !!value || 'This field is required.',
-}
+  required: (value: any) => !!value || "This field is required.",
+};
 
 // Reactive form data
 const form = ref<InvoiceForm>({
   customerId: 21,
-  customerName: 'Tapayz Premium',
-  title: 'USDT 100,000 KRW Purchase',
+  customerName: "Tapayz Premium",
+  title: "USDT 100,000 KRW Purchase",
   priceAtRequest: 1350.5,
   fiatAssetId: 1,
   cryptoAssetId: 1001,
   cashAmount: 100000,
   expiredSecond: 300,
-})
+});
 
 // State management
-const loading = ref(false)
-const response = ref<any>(null)
-const error = ref<string | null>(null)
+const loading = ref(false);
+const response = ref<any>(null);
+const error = ref<string | null>(null);
 
 // Computed formatted response
 const formattedResponse = computed(() => {
-  return response.value ? JSON.stringify(response.value, null, 2) : ''
-})
+  return response.value ? JSON.stringify(response.value, null, 2) : "";
+});
 
 // Submit invoice function
 const submitInvoice = async () => {
-  loading.value = true
-  error.value = null
-  response.value = null
+  loading.value = true;
+  error.value = null;
+  response.value = null;
 
   try {
-    const result = await axios.post('/invoice/issue', {
+    const result = await axios.post("/invoice/issue", {
       customerId: Number(form.value.customerId),
       customerName: form.value.customerName,
       title: form.value.title,
@@ -344,16 +319,16 @@ const submitInvoice = async () => {
       cryptoAssetId: Number(form.value.cryptoAssetId),
       cashAmount: Number(form.value.cashAmount),
       expiredSecond: Number(form.value.expiredSecond),
-    })
+    });
 
-    response.value = result.data
+    response.value = result.data;
   } catch (err: any) {
-    error.value = err.response?.data?.message || err.message || 'An unknown error occurred.'
-    console.error('Invoice API Error:', err)
+    error.value = err.response?.data?.message || err.message || "An unknown error occurred.";
+    console.error("Invoice API Error:", err);
   } finally {
-    loading.value = false
+    loading.value = false;
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -365,7 +340,7 @@ const submitInvoice = async () => {
   margin-bottom: 120px; // Footer와의 충분한 간격 확보
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -386,14 +361,13 @@ const submitInvoice = async () => {
   overflow: hidden;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background:
-      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234FEEBA' fill-opacity='0.05'%3E%3Ccircle cx='7' cy='7' r='3'/%3E%3Ccircle cx='53' cy='53' r='3'/%3E%3Ccircle cx='23' cy='37' r='2'/%3E%3Ccircle cx='37' cy='23' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234FEEBA' fill-opacity='0.05'%3E%3Ccircle cx='7' cy='7' r='3'/%3E%3Ccircle cx='53' cy='53' r='3'/%3E%3Ccircle cx='23' cy='37' r='2'/%3E%3Ccircle cx='37' cy='23' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
     animation: float 20s ease-in-out infinite;
   }
 }
@@ -404,7 +378,7 @@ const submitInvoice = async () => {
 }
 
 .crypto-title {
-  background: linear-gradient(45deg, #4FEEBA, #3f51b5);
+  background: linear-gradient(45deg, #4feeba, #3f51b5);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -425,7 +399,7 @@ const submitInvoice = async () => {
   overflow: hidden;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
@@ -469,20 +443,20 @@ const submitInvoice = async () => {
   }
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 6px;
-    background: linear-gradient(135deg, #3f51b5, #4FEEBA, #9fa8da, #5c6bc0);
+    background: linear-gradient(135deg, #3f51b5, #4feeba, #9fa8da, #5c6bc0);
     border-radius: 32px 32px 0 0;
     background-size: 300% 300%;
     animation: gradient-shift 4s ease infinite;
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 6px;
     left: 0;
@@ -494,21 +468,21 @@ const submitInvoice = async () => {
 }
 
 .luxury-title {
-  background: linear-gradient(135deg, #1a1a2e, #3f51b5, #4FEEBA);
+  background: linear-gradient(135deg, #1a1a2e, #3f51b5, #4feeba);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, #3f51b5, #4FEEBA);
+    background: linear-gradient(90deg, #3f51b5, #4feeba);
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(79, 238, 186, 0.3);
   }
@@ -525,7 +499,7 @@ const submitInvoice = async () => {
   padding: 24px 0;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -32px;
@@ -548,20 +522,20 @@ const submitInvoice = async () => {
   margin-bottom: 20px !important;
 
   .v-icon {
-    background: linear-gradient(135deg, #3f51b5, #4FEEBA);
+    background: linear-gradient(135deg, #3f51b5, #4feeba);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(0 2px 4px rgba(79, 238, 186, 0.2));
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -6px;
     left: 32px;
     width: 50px;
     height: 2px;
-    background: linear-gradient(90deg, #3f51b5, #4FEEBA);
+    background: linear-gradient(90deg, #3f51b5, #4feeba);
     border-radius: 2px;
     box-shadow: 0 2px 6px rgba(79, 238, 186, 0.25);
   }
@@ -572,15 +546,14 @@ const submitInvoice = async () => {
 
   .v-field {
     border-radius: 20px !important;
-    background:
-      linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.95));
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.95));
     border: 2px solid rgba(63, 81, 181, 0.08) !important;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 0;
       left: 0;
@@ -637,13 +610,13 @@ const submitInvoice = async () => {
   }
 
   &:focus-within .v-field__prepend-inner .v-icon {
-    color: #4FEEBA !important;
+    color: #4feeba !important;
     transform: scale(1.15) rotate(-5deg);
   }
 }
 
 .crypto-submit-btn {
-  background: linear-gradient(135deg, #3f51b5 0%, #4FEEBA 50%, #5c6bc0 100%) !important;
+  background: linear-gradient(135deg, #3f51b5 0%, #4feeba 50%, #5c6bc0 100%) !important;
   border-radius: 24px !important;
   text-transform: none !important;
   letter-spacing: 0.8px;
@@ -656,7 +629,7 @@ const submitInvoice = async () => {
     0 4px 16px rgba(79, 238, 186, 0.15);
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: -100%;
@@ -667,7 +640,7 @@ const submitInvoice = async () => {
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -714,7 +687,7 @@ const submitInvoice = async () => {
 .response-code {
   background: rgba(248, 250, 252, 0.8) !important;
   border-radius: 12px !important;
-  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace !important;
+  font-family: "JetBrains Mono", "Fira Code", "Courier New", monospace !important;
   font-size: 13px;
   line-height: 1.6;
   white-space: pre-wrap;
@@ -724,7 +697,8 @@ const submitInvoice = async () => {
 
 // Premium Animations
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -733,7 +707,8 @@ const submitInvoice = async () => {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
   }
   50% {
@@ -763,7 +738,8 @@ const submitInvoice = async () => {
 }
 
 @keyframes luxury-glow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow:
       0 0 20px rgba(79, 238, 186, 0.2),
       0 0 40px rgba(63, 81, 181, 0.1);
