@@ -51,5 +51,9 @@ const socials = ref([
     opacity: .05
 
   @media screen and (min-width: 960px)
-    margin-top: 200px
+    margin-top: 100px
+
+  // Deposit 페이지에서 Footer 위치 조정
+  body:has([id="deposit"]) &
+    margin-top: 50px
 </style>

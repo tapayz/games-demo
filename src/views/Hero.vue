@@ -34,7 +34,7 @@
               Secure wallet transfers, <em>today</em>
             </div>
 
-            <Btn class="title" height="78" block color="#5278ff">
+            <Btn class="title" height="78" block color="#5278ff" @click="router.push('/deposit')">
               <span class="text-h6">Deposit</span>
             </Btn>
             <Btn class="title mt-4" height="78" block color="#e95252">
@@ -87,6 +87,7 @@
 
 <script setup lang="ts">
 const { mdAndUp, smAndDown } = useDisplay();
+const router = useRouter();
 
 const highlights = ref([
   {

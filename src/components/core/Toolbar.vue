@@ -21,6 +21,7 @@
       class="mr-3"
       size="x-large"
       variant="text"
+      @click="router.push('/deposit')"
     >
       <span v-if="mdAndUp"> Deposit </span>
 
@@ -51,6 +52,7 @@
 <script setup lang="ts">
 const { mdAndUp, smAndDown } = useDisplay();
 const route = useRoute();
+const router = useRouter();
 </script>
 
 <style lang="sass">
